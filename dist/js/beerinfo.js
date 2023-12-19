@@ -7,12 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-/* let beerUrl: string */
-//beerUrl = "https://api.punkapi.com/v2/beers/random"
-//beerUrl = "https://api.punkapi.com/v2/beers"
-//beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
-// Funktion för att hämta från apin
-function getBeer(beerUrl) {
+// för att få ut id från urlen
+const urlId = new URLSearchParams(window.location.search);
+const beerId = urlId.get("id");
+console.log("ID from URL:", beerId);
+// samma function för att hämta från apin som index.
+// Borde gå att lägga separat och importera.
+function getSingleBeer(beerUrl) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(beerUrl);
@@ -31,27 +32,18 @@ function getBeer(beerUrl) {
         }
     });
 }
-// Funktion för att visa på ölen första sidan
-function randomBeer() {
+// Funktion för att skriva ut information om ölen.
+function beerInfo(beerId) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield getBeer("https://api.punkapi.com/v2/beers/random");
+        const data = yield getSingleBeer(`https://api.punkapi.com/v2/beers/${beerId}`);
         console.log(data[0].name);
         //Hämtar img_url
-        const image = document.querySelector("#beer-image");
+        const image = document.querySelector("#beer-image-info");
         //Lägger in bilden i html
         image.src = data[0].image_url;
         //hämtar titel
-        const title = document.querySelector("#beer-name");
+        const title = document.querySelector("#beer-name-info");
         title.innerHTML = data[0].name;
-        // Skickar beer id till beerinfo sida.
-        const infoButton = document.querySelector("#beer-info-link");
-        infoButton.onclick = function () {
-            const sendId = data[0].id;
-            console.log("sendId", sendId);
-            // fixar urlen som sänds
-            const url = `beerinfo.html?id=${sendId}`;
-            window.location.href = url;
-        };
     });
 }
-randomBeer();
+beerInfo(beerId);
