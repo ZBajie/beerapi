@@ -55,3 +55,4 @@ function randomBeer() {
     });
 }
 randomBeer();
+export {};

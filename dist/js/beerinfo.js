@@ -47,3 +47,4 @@ function beerInfo(beerId) {
     });
 }
 beerInfo(beerId);
+export {};

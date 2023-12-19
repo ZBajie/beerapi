@@ -1,14 +1,4 @@
-interface Exempel {
-  age: number
-  breed: string
-  chipNumber: string
-  image_url: string
-  name: string
-  owner: string
-  present: boolean
-  sex: string
-  id: number
-}
+import { Exempel } from "./interfaces"
 
 // för att få ut id från urlen
 const urlId = new URLSearchParams(window.location.search)
