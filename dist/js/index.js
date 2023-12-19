@@ -10,15 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 let beerUrl;
 //beerUrl = "https://api.punkapi.com/v2/beers/random"
 //beerUrl = "https://api.punkapi.com/v2/beers"
-beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz";
-function getBeer() {
+//beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
+function getBeer(beerUrl) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(beerUrl);
             console.log(response);
             if (response.status === 200) {
                 const data = yield response.json();
-                console.log(data);
+                return data;
             }
             else {
                 throw Error("Något gick fel, försök igen senare");
@@ -29,4 +29,12 @@ function getBeer() {
         }
     });
 }
-getBeer();
+function randomBeer() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield getBeer("https://api.punkapi.com/v2/beers/random");
+        console.log(data[0].name);
+        const image = document.querySelector(".beer-image");
+        image.src = data[0].img;
+    });
+}
+randomBeer();
