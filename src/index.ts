@@ -7,6 +7,7 @@ interface Exempel {
   owner: string
   present: boolean
   sex: string
+  id: number
 }
 
 /* let beerUrl: string */
@@ -14,7 +15,7 @@ interface Exempel {
 //beerUrl = "https://api.punkapi.com/v2/beers"
 //beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
 
-async function getBeer(beerUrl: string) {
+async function getBeer(beerUrl: string): Promise<Exempel[]> {
   try {
     const response = await fetch(beerUrl)
     console.log(response)
@@ -30,19 +31,44 @@ async function getBeer(beerUrl: string) {
   }
 }
 
+let beerId: number
+
+
+getBeer().then
+/* async function randomBeer() {
+  const data = await getBeer("https://api.punkapi.com/v2/beers/random")
+  console.log(data[0].name)
+  //Hämtar img_url
+  const image = document.querySelector("#beer-image") as HTMLImageElement
+  //Lägger in bilden i html
+ image.src = data[0].image_url;
+ //hämtar titel
+ const title = document.querySelector("#beer-name") as HTMLElement;
+ title.innerHTML = data[0].name;
+const infoButton = document.querySelector("#infoButton") as HTMLElement
+infoButton.addEventListener("click", (data) => beerInfo(data))
+} */
+
 async function randomBeer() {
   const data = await getBeer("https://api.punkapi.com/v2/beers/random")
   console.log(data[0].name)
   //Hämtar img_url
-  const image = document.querySelector(".beer-image") as HTMLImageElement
+  const image = document.querySelector("#beer-image") as HTMLImageElement
   //Lägger in bilden i html
  image.src = data[0].image_url;
  //hämtar titel
- const title = document.querySelector(".beer-name") as HTMLElement;
+ const title = document.querySelector("#beer-name") as HTMLElement;
  title.innerHTML = data[0].name;
+const infoButton = document.querySelector("#infoButton") as HTMLElement
+infoButton.addEventListener("click", (data) => beerInfo(data))
 }
-randomBeer()
 
-async function beerInfo(){
-  
+
+randomBeer() 
+
+async function beerInfo(data){
+ console.log("det fungerar");
+ window.location.href = "beerInfo.html";
+ console.log(data)
 }
+

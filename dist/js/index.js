@@ -30,21 +30,41 @@ function getBeer(beerUrl) {
         }
     });
 }
+let beerId;
+getBeer().then;
+/* async function randomBeer() {
+  const data = await getBeer("https://api.punkapi.com/v2/beers/random")
+  console.log(data[0].name)
+  //Hämtar img_url
+  const image = document.querySelector("#beer-image") as HTMLImageElement
+  //Lägger in bilden i html
+ image.src = data[0].image_url;
+ //hämtar titel
+ const title = document.querySelector("#beer-name") as HTMLElement;
+ title.innerHTML = data[0].name;
+const infoButton = document.querySelector("#infoButton") as HTMLElement
+infoButton.addEventListener("click", (data) => beerInfo(data))
+} */
 function randomBeer() {
     return __awaiter(this, void 0, void 0, function* () {
         const data = yield getBeer("https://api.punkapi.com/v2/beers/random");
         console.log(data[0].name);
         //Hämtar img_url
-        const image = document.querySelector(".beer-image");
+        const image = document.querySelector("#beer-image");
         //Lägger in bilden i html
         image.src = data[0].image_url;
         //hämtar titel
-        const title = document.querySelector(".beer-name");
+        const title = document.querySelector("#beer-name");
         title.innerHTML = data[0].name;
+        const infoButton = document.querySelector("#infoButton");
+        infoButton.addEventListener("click", (data) => beerInfo(data));
     });
 }
 randomBeer();
-function beerInfo() {
+function beerInfo(data) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log("det fungerar");
+        window.location.href = "beerInfo.html";
+        console.log(data);
     });
 }
