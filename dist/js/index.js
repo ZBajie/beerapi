@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-let beerUrl;
+/* let beerUrl: string */
 //beerUrl = "https://api.punkapi.com/v2/beers/random"
 //beerUrl = "https://api.punkapi.com/v2/beers"
 //beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
@@ -18,6 +18,7 @@ function getBeer(beerUrl) {
             console.log(response);
             if (response.status === 200) {
                 const data = yield response.json();
+                console.log(data);
                 return data;
             }
             else {
@@ -33,8 +34,17 @@ function randomBeer() {
     return __awaiter(this, void 0, void 0, function* () {
         const data = yield getBeer("https://api.punkapi.com/v2/beers/random");
         console.log(data[0].name);
+        //Hämtar img_url
         const image = document.querySelector(".beer-image");
-        image.src = data[0].img;
+        //Lägger in bilden i html
+        image.src = data[0].image_url;
+        //hämtar titel
+        const title = document.querySelector(".beer-name");
+        title.innerHTML = data[0].name;
     });
 }
 randomBeer();
+function beerInfo() {
+    return __awaiter(this, void 0, void 0, function* () {
+    });
+}
