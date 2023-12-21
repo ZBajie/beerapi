@@ -12,7 +12,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //beerUrl = "https://api.punkapi.com/v2/beers"
 //beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
 // Funktion för att hämta från apin
-function getBeer(beerUrl) {
+function getBeerSearch(beerUrl) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(beerUrl);
@@ -31,4 +31,20 @@ function getBeer(beerUrl) {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBeerButton = document.querySelector("#search-beer-button");
+    searchBeerButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        doSearchStuff();
+    });
+    function doSearchStuff() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const searchBeerElement = document.querySelector("#beersearch");
+            const searchWord = searchBeerElement.value;
+            console.log("search word", searchWord);
+            const data = yield getBeerSearch(`https://api.punkapi.com/v2/beers?beer_name=${searchWord}`);
+            console.log(data);
+        });
+    }
+});
 export {};
