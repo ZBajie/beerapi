@@ -19,6 +19,7 @@ async function getBeer(beerUrl: string): Promise<Exempel[]> {
     }
   } catch (error) {
     console.log(error);
+    console.log("hej");
   }
 }
 
