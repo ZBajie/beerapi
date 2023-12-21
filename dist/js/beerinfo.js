@@ -44,6 +44,28 @@ function beerInfo(beerId) {
         //hämtar titel
         const title = document.querySelector("#beer-name-info");
         title.innerHTML = data[0].name;
+        //Lägger till ingredients
+        const ingredients = document.querySelector("#beeringredients");
+        ingredients.innerHTML = data[0].ingredients.hops[0].name;
+        //Description
+        const description = document.querySelector("#beerdescription");
+        description.innerHTML = data[0].description;
+        const abv = document.querySelector("#beerabv");
+        abv.innerHTML = data[0].abv;
+        data[0].ingredients.hops.forEach((element) => {
+            const listItemUl = document.querySelector("#beerhops");
+            const listItems = document.createElement("li");
+            listItems.innerHTML = element.name;
+            listItemUl.appendChild(listItems);
+        });
+        data[0].ingredients.malt.forEach((element) => {
+            const listItemUlMalt = document.querySelector("#beerhopsmalt");
+            const listItems = document.createElement("li");
+            listItems.innerHTML = element.name;
+            listItemUlMalt.appendChild(listItems);
+            const yeast = document.querySelector("#beeryeast");
+            yeast.innerHTML = data[0].ingredients.yeast;
+        });
     });
 }
 beerInfo(beerId);
