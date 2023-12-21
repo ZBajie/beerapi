@@ -6,7 +6,7 @@ import { Exempel } from "./interfaces"
 //beerUrl = "https://api.punkapi.com/v2/beers?beer_name=Buzz"
 
 // Funktion för att hämta från apin
-async function getBeer(beerUrl: string): Promise<Exempel[]> {
+async function getBeerSearch(beerUrl: string): Promise<Exempel[]> {
   try {
     const response = await fetch(beerUrl)
     console.log(response)
@@ -21,3 +21,24 @@ async function getBeer(beerUrl: string): Promise<Exempel[]> {
     console.log(error)
   }
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const searchBeerButton = document.querySelector(
+    "#search-beer-button"
+  ) as HTMLInputElement
+  searchBeerButton.addEventListener("click", (event) => {
+    event.preventDefault()
+    doSearchStuff()
+  })
+
+  async function doSearchStuff(): Promise<void> {
+    const searchBeerElement = document.querySelector(
+      "#beersearch"
+    ) as HTMLInputElement
+    const searchWord: string = searchBeerElement.value
+    console.log("search word", searchWord)
+    const data = await getBeerSearch(
+      `https://api.punkapi.com/v2/beers?beer_name=${searchWord}`
+    )
+    console.log(data)
+  }
+})
