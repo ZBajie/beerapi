@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 function displaySearchResult(data: Exempel[]) {
+  const searchResultDiv = document.querySelector(
+    "#display-search-result"
+  ) as HTMLDivElement
   if (data.length > 0) {
     console.log("true")
   } else {

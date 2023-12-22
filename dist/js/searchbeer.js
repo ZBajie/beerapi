@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 function displaySearchResult(data) {
+    const searchResultDiv = document.querySelector("#display-search-result");
     if (data.length > 0) {
         console.log("true");
     }
