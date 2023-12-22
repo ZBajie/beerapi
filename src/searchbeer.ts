@@ -39,6 +39,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = await getBeerSearch(
       `https://api.punkapi.com/v2/beers?beer_name=${searchWord}`
     )
-    console.log(data)
+
+    displaySearchResult(data)
   }
 })
+
+function displaySearchResult(data: Exempel[]) {
+  const searchResultDiv = document.querySelector(
+    "#display-search-result"
+  ) as HTMLDivElement
+  if (data.length > 0) {
+    console.log("true")
+  } else {
+    console.log("false")
+  }
+}
