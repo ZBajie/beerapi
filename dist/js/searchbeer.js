@@ -31,12 +31,14 @@ function getBeerSearch(beerUrl) {
         }
     });
 }
+// eventlistener för sökrutan
 document.addEventListener("DOMContentLoaded", function () {
     const searchBeerButton = document.querySelector("#search-beer-button");
     searchBeerButton.addEventListener("click", (event) => {
         event.preventDefault();
         doSearchStuff();
     });
+    // Utför sökningen
     function doSearchStuff() {
         return __awaiter(this, void 0, void 0, function* () {
             const searchBeerElement = document.querySelector("#beersearch");
@@ -47,13 +49,41 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+// Skriver ut sökresultatet
 function displaySearchResult(data) {
-    const searchResultDiv = document.querySelector("#display-search-result");
+    const listItemUl = document.querySelector("#display-search-result");
     if (data.length > 0) {
+        // tar bort tidigare sökning
+        while (listItemUl.firstChild) {
+            listItemUl.removeChild(listItemUl.firstChild);
+        }
         console.log("true");
+        // Skriver ut ny lista
+        data.forEach((item) => {
+            let searchResult = item.name;
+            console.log(searchResult);
+            const listItems = document.createElement("li");
+            listItems.innerHTML = item.name;
+            listItems.setAttribute("beer-id", item.id.toString());
+            listItems.setAttribute("class", "beer-in-list");
+            listItemUl.appendChild(listItems);
+            addclickevent();
+        });
     }
     else {
         console.log("false");
     }
+}
+// Lyssnar på klick i sökresultatlistan och skickar id till beerinfo sidan
+function addclickevent() {
+    const beerInSearchList = document.querySelectorAll(".beer-in-list");
+    beerInSearchList.forEach((item) => {
+        item.addEventListener("click", () => {
+            const sendId = item.getAttribute("beer-id");
+            // fixar urlen som sänds
+            const url = `beerinfo.html?id=${sendId}`;
+            window.location.href = url;
+        });
+    });
 }
 export {};

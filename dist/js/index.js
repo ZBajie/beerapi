@@ -28,7 +28,6 @@ function getBeer(beerUrl) {
         }
         catch (error) {
             console.log(error);
-            console.log("hej");
         }
     });
 }
