@@ -9,10 +9,8 @@ import { Exempel } from "./interfaces"
 async function getBeerSearch(beerUrl: string): Promise<Exempel[]> {
   try {
     const response = await fetch(beerUrl)
-    console.log(response)
     if (response.status === 200) {
       const data: Exempel[] = await response.json()
-      console.log(data)
       return data
     } else {
       throw Error("Något gick fel, försök igen senare")
@@ -36,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "#beersearch"
     ) as HTMLInputElement
     const searchWord: string = searchBeerElement.value
-    console.log("search word", searchWord)
     const data = await getBeerSearch(
       `https://api.punkapi.com/v2/beers?beer_name=${searchWord}`
     )
@@ -54,12 +51,9 @@ function displaySearchResult(data: Exempel[]) {
     while (listItemUl.firstChild) {
       listItemUl.removeChild(listItemUl.firstChild)
     }
-    console.log("true")
     // Skriver ut ny lista
     data.forEach((item) => {
-      let searchResult: string = item.name
-      console.log(searchResult)
-      const listItems = document.createElement("li")
+      const listItems: HTMLLIElement = document.createElement("li")
       listItems.innerHTML = item.name
       listItems.setAttribute("beer-id", item.id.toString())
       listItems.setAttribute("class", "beer-in-list")
@@ -68,14 +62,15 @@ function displaySearchResult(data: Exempel[]) {
       addclickevent()
     })
   } else {
-    console.log("false")
+    console.log("No result found")
   }
 }
 
 // Lyssnar på klick i sökresultatlistan och skickar id till beerinfo sidan
 function addclickevent(): void {
-  const beerInSearchList = document.querySelectorAll(".beer-in-list")
-  beerInSearchList.forEach((item) => {
+  const beerInSearchList: NodeListOf<Element> =
+    document.querySelectorAll(".beer-in-list")
+  beerInSearchList.forEach((item: Element) => {
     item.addEventListener("click", () => {
       const sendId: string = item.getAttribute("beer-id")
       // fixar urlen som sänds

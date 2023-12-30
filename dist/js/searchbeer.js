@@ -16,10 +16,8 @@ function getBeerSearch(beerUrl) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield fetch(beerUrl);
-            console.log(response);
             if (response.status === 200) {
                 const data = yield response.json();
-                console.log(data);
                 return data;
             }
             else {
@@ -43,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return __awaiter(this, void 0, void 0, function* () {
             const searchBeerElement = document.querySelector("#beersearch");
             const searchWord = searchBeerElement.value;
-            console.log("search word", searchWord);
             const data = yield getBeerSearch(`https://api.punkapi.com/v2/beers?beer_name=${searchWord}`);
             displaySearchResult(data);
         });
@@ -57,11 +54,8 @@ function displaySearchResult(data) {
         while (listItemUl.firstChild) {
             listItemUl.removeChild(listItemUl.firstChild);
         }
-        console.log("true");
         // Skriver ut ny lista
         data.forEach((item) => {
-            let searchResult = item.name;
-            console.log(searchResult);
             const listItems = document.createElement("li");
             listItems.innerHTML = item.name;
             listItems.setAttribute("beer-id", item.id.toString());
@@ -71,7 +65,7 @@ function displaySearchResult(data) {
         });
     }
     else {
-        console.log("false");
+        console.log("No result found");
     }
 }
 // Lyssnar på klick i sökresultatlistan och skickar id till beerinfo sidan
