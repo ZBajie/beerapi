@@ -126,3 +126,50 @@ header {
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* Search page */
+
+.card-beer-search {
+  width: fit-content;
+  height: fit-content;
+  margin: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 8px 10px 4px rgba(0, 0, 0, 0.4);
+}
+
+.card-beer-search form {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-beer-search form label {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: larger;
+  font-weight: bold;
+}
+.card-beer-search form input {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: large;
+}
+
+.card-beer-search form button {
+  background-color: rgb(217, 231, 174);
+  font-size: large;
+}
+
+.card-beer-search ul {
+  padding: 1rem;
+}
+
+.card-beer-search ul li {
+  margin: 1rem;
+  cursor: pointer;
+}
+.card-beer-search ul li:hover {
+  margin: 1rem;
+  cursor: pointer;
+  font-size: larger;
+}

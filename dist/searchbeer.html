@@ -8,18 +8,23 @@
     <link rel="shortcut icon" href="#" type="image/x-icon" />
   </head>
   <body>
-    <h1>Search for your beer</h1>
-    <form>
-      <label for="gsearch">Search Beer by name:</label>
-      <input
-        type="search"
-        id="beersearch"
-        name="beersearch"
-        placeholder="Beer name"
-      />
-      <button id="search-beer-button">Search</button>
-    </form>
-    <ul id="display-search-result"></ul>
+    <header>
+      <h1>Punk beer search</h1>
+      <a href="index.html">Home</a>
+    </header>
+    <article class="card-beer-search">
+      <form>
+        <label for="beersearch">Search Beer by name:</label>
+        <input
+          type="search"
+          id="beersearch"
+          name="beersearch"
+          placeholder="Beer name"
+        />
+        <button id="search-beer-button">Search</button>
+      </form>
+      <ul id="display-search-result"></ul>
+    </article>
     <script type="module" src="js/searchbeer.js" defer></script>
   </body>
 </html>
