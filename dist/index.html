@@ -3,20 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beer Api exercise</title>
+    <title>Random beer</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
     <script type="module" src="js/index.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Beer</h1>
+      <h1>Punk random beer</h1>
+
       <a href="searchbeer.html">Search Beer</a>
     </header>
-    <article class="beer-with-image">
-      <img id="beer-image" src="" alt="Beer image is missing" />
-      <h2 id="beer-name"></h2>
-      <a href="#" id="beer-info-link">Info</a>
+    <article class="beer-with-image card-beer">
+      <div class="img-box">
+        <img id="beer-image" src="" alt="Beer image is missing" />
+      </div>
+      <div class="text-box">
+        <h2 id="beer-name"></h2>
+        <a href="#" id="beer-info-link">Info</a>
+      </div>
     </article>
+    <a href="index.html" id="random-beer-refresh">New random beer</a>
   </body>
 </html>
