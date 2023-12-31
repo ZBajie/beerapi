@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beer Api exercise</title>
+    <title>Punk beer information</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
   </head>
@@ -12,19 +12,28 @@
       <h1>Punk beer info</h1>
       <a href="index.html">Home</a>
     </header>
-    <article class="beer-with-image">
-      <img id="beer-image-info" src="" alt="Beer image is missing" />
-      <h2 id="beer-name-info"></h2>
-      <p id="beeringredients"></p>
-      <p id="beerdescription"></p>
-      <p id="beerabv"></p>
-      <ul id="beerhops">
-        HOPS
-      </ul>
-      <ul id="beerhopsmalt">
-        MALT
-      </ul>
-      <p id="beeryeast"></p>
+    <article class="beer-with-image card-beer-info">
+      <div class="img-box">
+        <img id="beer-image-info" src="" alt="Beer image is missing" />
+      </div>
+      <div class="text-box">
+        <h2 id="beer-name-info"></h2>
+        <p id="beerdescription"></p>
+        <div class="ingrediens">
+          <h3>ingrediens</h3>
+          <p id="beeringredients"></p>
+          <div class="hops-and-malt">
+            <ul id="beerhops">
+              HOPS
+            </ul>
+            <ul id="beerhopsmalt">
+              MALT
+            </ul>
+          </div>
+          <p>Yeast: <span id="beeryeast"></span></p>
+        </div>
+        <p>Strength: <span id="beerabv"></span>%</p>
+      </div>
     </article>
     <script type="module" src="js/beerinfo.js"></script>
   </body>
